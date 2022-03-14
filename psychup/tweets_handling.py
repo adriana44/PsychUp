@@ -4,7 +4,6 @@ from google_play_scraper.exceptions import NotFoundError
 from urllib.parse import urlparse, parse_qs
 import re
 import os
-import json
 
 admin_pwd = os.environ.get("ADMIN_PWD")
 client = MongoClient(f'mongodb+srv://admin:{admin_pwd}@cluster0.n6i5h.mongodb.net/?retryWrites=true&w=majority')
@@ -130,13 +129,3 @@ def process_tweets(tweets_dict: dict) -> None:
             process_one_tweet(tweet, users)
     else:
         process_one_tweet(tweets, users)
-
-
-# def main():
-#     with open("response.json", "r") as outfile:
-#         json_dict = json.load(outfile)
-#     process_tweets(json_dict)
-#
-#
-# if __name__ == '__main__':
-#     main()
